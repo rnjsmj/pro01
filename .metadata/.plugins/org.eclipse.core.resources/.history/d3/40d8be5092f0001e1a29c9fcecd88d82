@@ -1,0 +1,5 @@
+package org.gh.dto;
+
+public class Member {
+
+}

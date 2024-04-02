@@ -1,0 +1,98 @@
+package org.gh.dto;
+
+public class QnA {
+	private int no;			//글번호
+	private String plevel;	//글종류
+	private int parno;		//부모글번호
+	private String title;	//글제목
+	private String content;	//글내용
+	private String resdate;	//작성일시
+	private int visited;	//조회수
+	private String aid;		//작성자 id
+	public QnA(int no, String plevel, int parno, String title, String content, String resdate, int visited,
+			String aid) {
+		super();
+		this.no = no;
+		this.plevel = plevel;
+		this.parno = parno;
+		this.title = title;
+		this.content = content;
+		this.resdate = resdate;
+		this.visited = visited;
+		this.aid = aid;
+	}
+	
+	public QnA() {}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public String getPlevel() {
+		return plevel;
+	}
+
+	public void setPlevel(String plevel) {
+		this.plevel = plevel;
+	}
+
+	public int getParno() {
+		return parno;
+	}
+
+	public void setParno(int parno) {
+		this.parno = parno;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getResdate() {
+		return resdate;
+	}
+
+	public void setResdate(String resdate) {
+		this.resdate = resdate;
+	}
+
+	public int getVisited() {
+		return visited;
+	}
+
+	public void setVisited(int visited) {
+		this.visited = visited;
+	}
+
+	public String getAid() {
+		return aid;
+	}
+
+	public void setAid(String aid) {
+		this.aid = aid;
+	}
+
+	@Override
+	public String toString() {
+		return "QnA [no=" + no + ", plevel=" + plevel + ", parno=" + parno + ", title=" + title + ", content=" + content
+				+ ", resdate=" + resdate + ", visited=" + visited + ", aid=" + aid + "]";
+	}
+	
+	
+}

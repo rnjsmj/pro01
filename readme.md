@@ -100,4 +100,4 @@
 #### 4-2-2. 논리적 설계
 ![논리적모델링](./design/logical_erd.png)
 #### 4-2-3. 물리적 설계
-![물리적모델링](./design/physical_erd2.PNG)
+![물리적모델링](./design/physical_erd2.png)

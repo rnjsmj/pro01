@@ -6,8 +6,9 @@ public class Member {
 	private String birth;		//생년월일
 	private String tel;			//전화번호
 	private String email;		//회원이메일
+	private String regdate; 	//가입일시
 	
-	public Member(String userid, String password, String birth, String tel, String email) {
+	public Member(String userid, String password, String birth, String tel, String email, String regdate) {
 		super();
 		this.userid = userid;
 		this.password = password;
@@ -58,11 +59,21 @@ public class Member {
 		this.email = email;
 	}
 
+	
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [userid=" + userid + ", password=" + password + ", birth=" + birth + ", tel=" + tel + ", email="
-				+ email + "]";
+				+ email + ", regdate=" + regdate + "]";
 	}
+
 	
 	
 }

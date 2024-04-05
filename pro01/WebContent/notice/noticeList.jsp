@@ -11,25 +11,33 @@
 <%@ include file="/head.jsp" %>
 <style>
 	.title { text-align:center; padding:1em; }
-	.table { margin-bottom: 100px; text-align:center;}
+	.table {text-align:center; width:1100px; margin: 0 auto;}
+	.buttons { text-align:right; }
+	.th-no {width:10%;}
+	.th-title{width:50%;}
+	.th-resdate{width:30%;}
+	.td-title {text-align:left;}
+	.a-title { color:black;}
+	.a-title:hover { font-weight:600; text-decoration:none;}
+	.div-table { text-align:center; display:flex; justify-center:center;  margin-bottom: 100px; }
 </style>
 </head>
 <body>
 <div id="header">
 	<%@ include file="/header.jsp" %>
 </div>
-<div id="contents" class="container">
+<div id="contents" >
 	<section>
 		<div>
 			<h3 class="title">공지사항</h3>
-			<div>
+			<div class="div-table">
 				<table class="table">
 					<thead class="thead-dark">
 						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성일</th>
-							<th>조회수</th>
+							<th class="th-no">번호</th>
+							<th class="th-title">제목</th>
+							<th class="th-resdate">작성일</th>
+							<th class="th-visited">조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -37,8 +45,13 @@
 							<c:forEach var="dto" items="${noticeList }">
 								<tr>
 									<td>${dto.no }</td>
-									<td>${dto.title }</td>
+									<td class="td-title"><a href="${path0 }/GetNotice.do?no=${dto.no}" class="a-title">${dto.title }</a></td>
 									<td>${dto.resdate }</td>
+									<!-- 날짜만 표시할 경우
+									<td class="td-resdate">
+										<fmt:parseDate value="${dto.resdate }" pattern="yyyy-MM-dd" var="resdate" />
+										<fmt:formatDate value="${resdate }" pattern="yyyy-MM-dd" />
+									</td>-->
 									<td>${dto.visited }</td>
 								</tr>
 							</c:forEach>
@@ -50,7 +63,13 @@
 						</c:if>
 					</tbody>
 				</table>
+				
+				
 			</div>
+			
+			<div class="buttons">
+				  <a href="${path0 }/notice/notice_ins.jsp" class="btn btn-secondary">글 등록</a>
+				</div>
 		</div>
 	</section>
 	<section class="page" id="page2">

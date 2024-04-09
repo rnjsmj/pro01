@@ -3,18 +3,19 @@ package org.gh.dto;
 public class Member {
 	private String userid;		//아이디
 	private String password;	//비밀번호
-	private String birth;		//생년월일
+	private String name;		//이름
 	private String tel;			//전화번호
 	private String email;		//회원이메일
 	private String regdate; 	//가입일시
 	
-	public Member(String userid, String password, String birth, String tel, String email, String regdate) {
+	public Member(String userid, String password, String name, String tel, String email, String regdate) {
 		super();
 		this.userid = userid;
 		this.password = password;
-		this.birth = birth;
+		this.name = name;
 		this.tel = tel;
 		this.email = email;
+		this.regdate = regdate;
 	}
 	
 	public Member() {}
@@ -35,12 +36,12 @@ public class Member {
 		this.password = password;
 	}
 
-	public String getBirth() {
-		return birth;
+	public String getName() {
+		return name;
 	}
 
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getTel() {
@@ -70,7 +71,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [userid=" + userid + ", password=" + password + ", birth=" + birth + ", tel=" + tel + ", email="
+		return "Member [userid=" + userid + ", password=" + password + ", name=" + name + ", tel=" + tel + ", email="
 				+ email + ", regdate=" + regdate + "]";
 	}
 

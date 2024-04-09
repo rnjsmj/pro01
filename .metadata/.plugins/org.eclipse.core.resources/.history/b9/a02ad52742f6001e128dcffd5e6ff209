@@ -1,0 +1,9 @@
+package org.gh.dao;
+
+public class MemberDAO {
+	//회원목록 리스트 getMemberList
+	
+	//회원 한명 정보 getMember(id)
+	
+	//회원가입 join
+}

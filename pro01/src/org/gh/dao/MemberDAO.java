@@ -15,52 +15,52 @@ public class MemberDAO {
 	
 	//회원목록 리스트 getMemberList()
 	public List<Member> getMemberList() {
-		List<Member> memList = new ArrayList<>();
+		List<Member> memberList = new ArrayList<>();
 		MySQLDB mysql = new MySQLDB();
 		try {
 			con = mysql.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_MEMBER);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				Member mem = new Member(rs.getString("id"),
+				Member member = new Member(rs.getString("id"),
 						rs.getString("password"),
 						rs.getString("name"),
 						rs.getString("tel"),
 						rs.getString("email"),
 						rs.getString("regdate"));
-				memList.add(mem);
+				memberList.add(member);
 			}
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
 			mysql.close(con, pstmt, rs);
 		}
-		return memList;
+		return memberList;
 	}
 	
 	//회원 한명 정보 getMember(String id)
 	public Member getMember(String id) {
-		Member mem = new Member();
-		MySQLDB oracle = new MySQLDB();
+		Member member = new Member();
+		MySQLDB mysql = new MySQLDB();
 		try {
-			con = oracle.connect();
+			con = mysql.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_MEMBER_BYID);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				mem.setUserid(rs.getString("id"));
-				mem.setPassword(rs.getString("pw"));
-				mem.setName(rs.getString("name"));
-				mem.setTel(rs.getString("tel"));
-				mem.setEmail(rs.getString("email"));
-				mem.setRegdate(rs.getString("regdate"));
+				member.setId(rs.getString("id"));
+				member.setPassword(rs.getString("password"));
+				member.setName(rs.getString("name"));
+				member.setTel(rs.getString("tel"));
+				member.setEmail(rs.getString("email"));
+				member.setRegdate(rs.getString("regdate"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			mysql.close(con, pstmt, rs);
 		}
-		return mem;
+		return member;
 	}
 	
 	//회원가입 insertMember(Member member)
@@ -70,7 +70,7 @@ public class MemberDAO {
 		try {
 			con = mysql.connect();
 			pstmt = con.prepareStatement(SqlLang.INS_MEMBER);
-			pstmt.setString(1, member.getUserid());
+			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4, member.getTel());
@@ -95,7 +95,7 @@ public class MemberDAO {
 			pstmt.setString(2, member.getName());
 			pstmt.setString(3, member.getTel());
 			pstmt.setString(4, member.getEmail());
-			pstmt.setString(5, member.getUserid());
+			pstmt.setString(5, member.getId());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -120,5 +120,27 @@ public class MemberDAO {
 			mysql.close(con, pstmt);
 		}
 		return cnt;
+	}
+	
+	//아이디 중복확인
+	public boolean idCheck(String id) {
+		boolean ck = false;
+		MySQLDB mysql = new MySQLDB();
+		try {
+			con = mysql.connect();
+			pstmt = con.prepareStatement(SqlLang.SELECT_MEMBER_BYID);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				ck = true;
+			} else {
+				ck = false;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt, rs);
+		}
+		return ck;
 	}
 }

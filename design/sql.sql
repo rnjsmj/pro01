@@ -40,11 +40,14 @@ select * from notice;
     
  create table member (userid varchar(20) primary key,
 	password varchar(20) not null,
-    birth datetime not null,
+    name varchar(20) not null,
     tel varchar(20),
     email varchar(100),
     regdate datetime default current_timestamp);
-    
+
+alter table member rename column birth to name;
+alter table member modify name varchar(20) not null;
+alter table member rename column userid to id;
 drop table member;
 desc member;
     

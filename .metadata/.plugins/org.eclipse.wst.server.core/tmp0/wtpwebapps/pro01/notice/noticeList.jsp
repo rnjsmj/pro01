@@ -10,9 +10,12 @@
 <title>갈현동 - 공지사항</title>
 <%@ include file="/head.jsp" %>
 <style>
+	.page {text-align:center;}
 	.title { text-align:center; padding:1em; }
-	.table {text-align:center; width:1100px; margin: 0 auto;}
-	.buttons { text-align:right; }
+	.table {text-align:center; width:960px; margin: 0 auto;}
+	
+	.buttons { text-align:right; width:960px; margin : auto;}
+	.buttons a { margin-right:30px;}
 	.th-no {width:10%;}
 	.th-title{width:50%;}
 	.th-resdate{width:30%;}
@@ -28,7 +31,7 @@
 </div>
 <div id="contents" >
 	<section>
-		<div>
+		<div class="page" id="page1">
 			<h3 class="title">공지사항</h3>
 			<div class="div-table">
 				<table class="table">
@@ -63,19 +66,14 @@
 						</c:if>
 					</tbody>
 				</table>
-				
-				
 			</div>
+			<script>
 			
+			</script>
 			<div class="buttons">
 				  <a href="${path0 }/notice/notice_ins.jsp" class="btn btn-secondary">글 등록</a>
-				</div>
+			</div>
 		</div>
-	</section>
-	<section class="page" id="page2">
-		<div style="width:1400px; margin:0 auto;">	
-			<h3 class="page_title"></h3>
-		</div>	
 	</section>
 </div>
 <div id="footer">

@@ -5,6 +5,7 @@
 <c:set var="ipath" value="<%= request.getContextPath() %>" />
 <script src="${ipath }/js/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="${ipath }/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.0/css/all.min.css" />
 <script src="${ipath }/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="subject" content="갈현동 소개 (Galhyeon-dong Intro)" />

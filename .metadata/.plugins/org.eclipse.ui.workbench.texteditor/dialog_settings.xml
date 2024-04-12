@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="DAO"/>
+		<item key="selection" value="qna"/>
 		<item key="wrap" value="true"/>
-		<item key="casesensitive" value="false"/>
+		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="notice"/>
+			<item value="Notice"/>
 			<item value="dao"/>
 			<item value="pw"/>
 			<item value="mem."/>
@@ -18,6 +20,9 @@
 			<item value="addr"/>
 		</list>
 		<list key="replacehistory">
+			<item value="qna"/>
+			<item value="Qna"/>
+			<item value="Qn"/>
 			<item value="password"/>
 			<item value="member."/>
 			<item value="Id"/>
@@ -28,8 +33,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="654"/>
-		<item key="DIALOG_Y_ORIGIN" value="268"/>
+		<item key="DIALOG_X_ORIGIN" value="-157"/>
+		<item key="DIALOG_Y_ORIGIN" value="335"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

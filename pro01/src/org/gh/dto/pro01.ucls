@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="org.gh.dto.QnA" project="pro01" file="/pro01/src/org/gh/dto/QnA.java" 
+  <class id="4" language="java" name="org.gh.dto.Qna" project="pro01" file="/pro01/src/org/gh/dto/Qna.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="716" y="481"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -2,14 +2,14 @@ package org.gh.dto;
 
 public class Qna {
 	private int no;			//글번호
-	private int plevel;	//글종류
+	private String plevel;	//글종류
 	private int parno;		//부모글번호
 	private String title;	//글제목
 	private String content;	//글내용
 	private String resdate;	//작성일시
 	private int visited;	//조회수
 	private String aid;		//작성자 id
-	public Qna(int no, int plevel, int parno, String title, String content, String resdate, int visited,
+	public Qna(int no, String plevel, int parno, String title, String content, String resdate, int visited,
 			String aid) {
 		super();
 		this.no = no;
@@ -32,11 +32,11 @@ public class Qna {
 		this.no = no;
 	}
 
-	public int getPlevel() {
+	public String getPlevel() {
 		return plevel;
 	}
 
-	public void setPlevel(int plevel) {
+	public void setPlevel(String plevel) {
 		this.plevel = plevel;
 	}
 

@@ -35,20 +35,6 @@ public interface SqlLang {
 	String DEL_NOTICE = "delete from notice where no=?";
 	
 	
-	//묻고답하기 글 목록
-	String SELECT_ALL_QNA = "select * from qna order by parno desc, plevel asc";
-	//묻고답하기 글 상세보기
-	String SELECT_QNA_BYNO = "select * from qna where no = ?";
-	//질문 글 등록
-	String INS_QUESTION = "insert into qna values(default, 1, null, ?, ?, default, 0, ?";
-	String UPD_QUESTION_PARNO = "update qna set parno = no where plevel=1";
-	//답변 글 등록
-	String INS_ANSWER = "insert into qna values(defualt, 2, ?, ?, ?, default, 0, 'admin')";
-	
-	
-	
-	
-	
 	
 	
 }

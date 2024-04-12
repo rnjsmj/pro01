@@ -14,6 +14,13 @@
 .buttons { text-align:right; }
 .buttons a, button {width:90px;}
 </style>
+<%
+	String loginId = (String) session.getAttribute("sid");
+	//if(loginId == null){
+	if(loginId == null || !loginId.equals("admin")) {
+		response.sendRedirect("/pro01");
+	}
+%>
 </head>
 <body>
 <div id="header">

@@ -9,6 +9,8 @@ create table traffic(tno int primary key auto_increment,
     
 drop table traffic;
 desc traffic;
+alter table traffic modify route varchar(1000);
+alter table traffic modify no varchar(20) not null;
 
     
 create table place(pcode int primary key auto_increment,
@@ -50,6 +52,8 @@ alter table member modify name varchar(20) not null;
 alter table member rename column userid to id;
 drop table member;
 desc member;
+select * from member;
+
     
 create table qna(no int primary key auto_increment,
 	plevel varchar(2) not null,
@@ -60,7 +64,21 @@ create table qna(no int primary key auto_increment,
     visited int default 0,
     aid varchar(20));
 
-drop table qna;
+-- drop table qna;
+select * from qna;
+-- parno 내림차순 > plevel 오름차순
+-- 질문 등록 쿼리
+insert into qna values(default, 1, null, '질문1', '질문1 내용', default, 0, 'dummy');
+update qna set parno = no where plevel = 1;
+
+insert into qna values(default, 1, null, '질문2', '질문2 내용', default, 0, 'dummy');
+-- 답변 등록쿼리
+insert into qna values(default, 2, 1, '질문1 답변', '질문1 답변 내용', default, 0, 'admin');
+-- 목록 출력 정렬
+select * from qna order by parno desc, plevel asc;  
+    
+    
+    
     
 create table data(no int primary key auto_increment,
 	title varchar(100) not null,
@@ -70,8 +88,10 @@ create table data(no int primary key auto_increment,
     visited int default 0);
 
 alter table qna add constraint qna_member_FK foreign key (aid)
-	references member(userid);
-    
+	references member(id);
+
+
+
 desc traffic;
 desc place;
 desc data;

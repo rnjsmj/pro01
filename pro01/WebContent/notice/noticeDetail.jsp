@@ -34,11 +34,6 @@
 							<td class="td-no">${notice.no }</td>
 							<td class="td-title">${notice.title }</td>
 							<td class="td-resdate">${notice.resdate }</td>
-							<!-- 날짜만 표시할 경우
-							<td class="td-resdate">
-								<fmt:parseDate value="${notice.resdate }" pattern="yyyy-MM-dd" var="resdate" />
-								<fmt:formatDate value="${resdate }" pattern="yyyy-MM-dd" />
-							</td>-->
 							<td class="td-visited">${notice.visited }</td>
 						</tr>
 						<tr class="tr2">
@@ -48,9 +43,11 @@
 				</table>
 				<hr>
 				<div class="buttons">
-				  <a href="${path0 }/notice/notice_ins.jsp" class="btn btn-secondary">새 공지</a>
-				  <a href="${path0 }/NoticeUpdate.do?no=${notice.no }" class="btn btn-secondary">수정</a>
-				  <a href="${path0 }/NoticeDelete.do?no=${notice.no }" class="btn btn-secondary">삭제</a>
+					<c:if test="${sid.equals('admin') }">
+					  <a href="${path0 }/notice/notice_ins.jsp" class="btn btn-secondary">새 공지</a>
+					  <a href="${path0 }/NoticeUpdate.do?no=${notice.no }" class="btn btn-secondary">수정</a>
+					  <a href="${path0 }/NoticeDelete.do?no=${notice.no }" class="btn btn-secondary">삭제</a>
+					  </c:if>
 				  <a href="${path0 }/NoticeList.do" class="btn btn-secondary">목록</a>
 				</div>
 			</div>

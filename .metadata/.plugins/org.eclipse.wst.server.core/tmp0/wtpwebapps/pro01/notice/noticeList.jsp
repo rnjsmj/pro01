@@ -50,11 +50,7 @@
 									<td>${dto.no }</td>
 									<td class="td-title"><a href="${path0 }/GetNotice.do?no=${dto.no}" class="a-title">${dto.title }</a></td>
 									<td>${dto.resdate }</td>
-									<!-- 날짜만 표시할 경우
-									<td class="td-resdate">
-										<fmt:parseDate value="${dto.resdate }" pattern="yyyy-MM-dd" var="resdate" />
-										<fmt:formatDate value="${resdate }" pattern="yyyy-MM-dd" />
-									</td>-->
+									
 									<td>${dto.visited }</td>
 								</tr>
 							</c:forEach>
@@ -67,12 +63,11 @@
 					</tbody>
 				</table>
 			</div>
-			<script>
-			
-			</script>
+			<c:if test="${sid.equals('admin') }">
 			<div class="buttons">
 				  <a href="${path0 }/notice/notice_ins.jsp" class="btn btn-secondary">글 등록</a>
 			</div>
+			</c:if>
 		</div>
 	</section>
 </div>

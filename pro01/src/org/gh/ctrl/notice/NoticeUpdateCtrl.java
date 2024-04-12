@@ -24,7 +24,7 @@ public class NoticeUpdateCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
+	
 		int no = Integer.parseInt(request.getParameter("no"));
 		
 		NoticeDAO dao = new NoticeDAO();

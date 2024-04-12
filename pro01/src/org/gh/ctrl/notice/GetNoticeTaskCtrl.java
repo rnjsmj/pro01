@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.gh.dao.NoticeDAO;
 import org.gh.dto.Notice;
@@ -24,6 +25,12 @@ public class GetNoticeTaskCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
+		HttpSession session = request.getSession();
+		String loginId = (String) session.getAttribute("sid");
+		if(loginId == null){
+			response.sendRedirect("/pro01");
+		}
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		

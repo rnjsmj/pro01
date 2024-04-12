@@ -3,6 +3,7 @@ package org.gh.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			mysql.close(con, pstmt, rs);
+			
 		}
 		return member;
 	}
@@ -79,7 +81,17 @@ public class MemberDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			mysql.close(con, pstmt);
+			//mysql.close(con, pstmt);
+			if (pstmt != null || con != null) {
+				try {
+					rs.close();
+					pstmt.close();
+					con.close();
+					
+				} catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return cnt;
 	}

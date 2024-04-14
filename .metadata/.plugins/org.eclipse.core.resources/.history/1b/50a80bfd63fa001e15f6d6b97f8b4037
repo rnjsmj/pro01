@@ -1,0 +1,5 @@
+@charset "UTF-8";
+#contents {min-height:100%; height:auto;}
+#header {clear:both; height:90px;  min-width:1100px; }
+#footer { display:block; background-color:#2c2c2c; padding-top:20px; padding-bottom:40px; 
+color:#fff; position:relative; transform:translateY(-100%)}

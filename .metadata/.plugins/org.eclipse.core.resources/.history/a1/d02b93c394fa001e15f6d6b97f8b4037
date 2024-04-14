@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<c:set var="path0" value="<%=request.getContextPath() %>" />    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${title }</title>
+<%@ include file="/head.jsp" %>
+<style>
+	.page {text-align:center; justify-center:center; }
+	.page_title {text-align:left; width:960px; margin:auto; padding-top:1em; padding-bottom:1em;}
+	
+	
+	
+ 	.buttons { text-align:right; width:960px; margin : auto;}
+</style>
+</head>
+<body>
+<div id="header">
+	<%@ include file="/header.jsp" %>
+</div>
+<div id="contents" class="contents>
+	<section class="page">
+		<div class="div-page">
+			<h3 class="page_title">공지사항</h3>
+			 
+				
+		</div>
+	</section>
+</div>
+<div id="footer">
+	<%@ include file="/footer.jsp" %>
+</div>
+</body>
+</html>

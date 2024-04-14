@@ -43,7 +43,7 @@ public class QnaDAO {
 		return qnaList;
 	}
 	
-	//공지 상세보기
+	//묻고답하기 상세보기
 	public Qna getQna(int no) {
 		Qna qna = new Qna();
 		MySQLDB mysql = new MySQLDB();
@@ -51,20 +51,23 @@ public class QnaDAO {
 		try {
 			con = mysql.connect();
 			
-			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_NOTICE);
+			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_QNA);
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
 			pstmt = null;
 			
-			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
+			pstmt = con.prepareStatement(SqlLang.SELECT_QNA_BYNO);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				qna.setNo(rs.getInt("no"));
+				qna.setPlevel(rs.getInt("plevel"));
+				qna.setParno(rs.getInt("parno"));
 				qna.setTitle(rs.getString("title"));
 				qna.setContent(rs.getString("content"));
 				qna.setResdate(rs.getString("resdate"));
 				qna.setVisited(rs.getInt("visited"));
+				qna.setAid(rs.getString("aid"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,7 +78,7 @@ public class QnaDAO {
 		return qna;
 	}
 	
-	//공지 작업 후 상세보기 (입력, 수정 후)
+	//묻고답하기 글 작업 후 상세보기 (입력, 수정 후)
 	public Qna getQnaTask(int no) {
 		Qna qna = new Qna();
 		MySQLDB mysql = new MySQLDB();
@@ -83,15 +86,18 @@ public class QnaDAO {
 		try {
 			con = mysql.connect();
 	
-			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
+			pstmt = con.prepareStatement(SqlLang.SELECT_QNA_BYNO);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				qna.setNo(rs.getInt("no"));
+				qna.setPlevel(rs.getInt("plevel"));
+				qna.setParno(rs.getInt("parno"));
 				qna.setTitle(rs.getString("title"));
 				qna.setContent(rs.getString("content"));
 				qna.setResdate(rs.getString("resdate"));
 				qna.setVisited(rs.getInt("visited"));
+				qna.setAid(rs.getString("aid"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,15 +109,39 @@ public class QnaDAO {
 	}
 	
 	
-	//공지사항 등록
-	public int insertQna(Qna qna) {
+	//질문 글 등록
+	public int insertQuestion(Qna qna) {
 		int cnt = 0;
 		MySQLDB mysql = new MySQLDB();
 		try {
 			con = mysql.connect();
-			pstmt = con.prepareStatement(SqlLang.INSERT_NOTICE);
+			pstmt = con.prepareStatement(SqlLang.INS_QUESTION);
 			pstmt.setString(1, qna.getTitle());
 			pstmt.setString(2, qna.getContent());
+			pstmt.setString(3, qna.getAid());
+			cnt = pstmt.executeUpdate();
+			
+			pstmt = null;
+			pstmt = con.prepareStatement(SqlLang.UPD_QUESTION_PARNO);
+			cnt = cnt + pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt);
+		}
+		return cnt;
+	}
+	
+	//답변 글 등록
+	public int insertAnswer(Qna qna) {
+		int cnt = 0;
+		MySQLDB mysql = new MySQLDB();
+		try {
+			con = mysql.connect();
+			pstmt = con.prepareStatement(SqlLang.INS_ANSWER);
+			pstmt.setInt(1, qna.getParno());
+			pstmt.setString(2, qna.getTitle());
+			pstmt.setString(3, qna.getContent());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -128,7 +158,7 @@ public class QnaDAO {
 		MySQLDB mysql = new MySQLDB();
 		try {
 			con = mysql.connect();
-			pstmt = con.prepareStatement(SqlLang.UPD_NOTICE);
+			pstmt = con.prepareStatement(SqlLang.UPD_QNA);
 			pstmt.setString(1, qna.getTitle());
 			pstmt.setString(2, qna.getContent());
 			pstmt.setInt(3, qna.getNo());
@@ -141,13 +171,30 @@ public class QnaDAO {
 		return cnt;
 	}
 	
-	//공지사항 삭제
-	public int deleteQna(int no) {
+	//질문 글 삭제
+	public int deleteQuestion(int parno) {
 		int cnt = 0;
 		MySQLDB mysql = new MySQLDB();
 		try {
 			con = mysql.connect();
-			pstmt = con.prepareStatement(SqlLang.DEL_NOTICE);
+			pstmt = con.prepareStatement(SqlLang.DEL_QUESTION);
+			pstmt.setInt(1, parno);
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt);
+		}
+		return cnt;
+	}	
+	
+	//공지사항 삭제
+	public int deleteAnswer(int no) {
+		int cnt = 0;
+		MySQLDB mysql = new MySQLDB();
+		try {
+			con = mysql.connect();
+			pstmt = con.prepareStatement(SqlLang.DEL_ANSWER);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -157,4 +204,6 @@ public class QnaDAO {
 		}
 		return cnt;
 	}
+	
+	
 }

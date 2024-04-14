@@ -154,4 +154,30 @@ public class NoticeDAO {
 		}
 		return cnt;
 	}
+	
+	//가장 최근 공지사항
+	public Notice getLatestNotice() {
+		Notice notice = new Notice();
+		MySQLDB mysql = new MySQLDB();
+		
+		try {
+			con = mysql.connect();
+			
+			pstmt = con.prepareStatement(SqlLang.SELECT_LATEST_NOTICE);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				notice.setNo(rs.getInt("no"));
+				notice.setTitle(rs.getString("title"));
+				notice.setContent(rs.getString("content"));
+				notice.setResdate(rs.getString("resdate"));
+				notice.setVisited(rs.getInt("visited"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt, rs);
+		}
+		
+		return notice;
+	}
 }

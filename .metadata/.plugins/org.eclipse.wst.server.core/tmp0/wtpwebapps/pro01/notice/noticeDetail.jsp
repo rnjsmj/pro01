@@ -10,24 +10,30 @@
 <title>${title }</title>
 <%@ include file="/head.jsp" %>
 <style>
+	.page {text-align:center; justify-center:center; }
+	.page_title {text-align:left; width:960px; margin:auto; padding-top:1em; padding-bottom:1em;}
+	.div-table { text-align:center;justify-center:center;  margin-bottom: 100px; }
+	.table {text-align:center; width:960px; margin: 0 auto; min-width:724px;}
+	
  	.tr1 { border-top:solid 5px; }
  	.tr2 { border-top:solid 2px;}
  	.td-no {color:#b8bbbf; width:10%; text-align:center;}
 	.td-title{width:50%; text-align:left; font-weight:bold;}
 	.td-resdate{width:30%; text-align:right; }
 	.td-visited{width:10%; text-align:center;}
- 	.buttons {text-align:right;}
+	.td-content{text-align:left; }
+ 	.buttons { text-align:right; width:960px; margin : auto;}
 </style>
 </head>
 <body>
 <div id="header">
 	<%@ include file="/header.jsp" %>
 </div>
-<div id="contents" class="container">
+<div id="contents" >
 	<section class="page">
-		<div>
+		<div >
 			<h3 class="page_title">공지사항</h3>
-			<div>
+			<div class="div-table">
 				<table class="table">
 					<tbody>
 						<tr class="tr1">
@@ -42,7 +48,9 @@
 					</tbody>
 				</table>
 				<hr>
-				<div class="buttons">
+				
+			</div>
+			<div class="buttons">
 					<c:if test="${sid.equals('admin') }">
 					  <a href="${path0 }/notice/notice_ins.jsp" class="btn btn-secondary">새 공지</a>
 					  <a href="${path0 }/NoticeUpdate.do?no=${notice.no }" class="btn btn-secondary">수정</a>
@@ -50,7 +58,6 @@
 					  </c:if>
 				  <a href="${path0 }/NoticeList.do" class="btn btn-secondary">목록</a>
 				</div>
-			</div>
 		</div>
 	</section>
 </div>

@@ -1,0 +1,208 @@
+package org.gh.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.gh.dto.Notice;
+import org.gh.dto.Place;
+
+public class PlaceDAO {
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	//주요 시설 목록
+	public List<Place> getPlaceList() {
+		List<Place> placeList = new ArrayList<>();
+		
+		MySQLDB mysql = new MySQLDB();
+		try {
+			con = mysql.connect();
+			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_PLACE);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Place place = new Place(rs.getInt("pcode"),
+						rs.getString("pname"),
+						rs.getString("ptype"),
+						rs.getString("paddr"),
+						rs.getString("ptel"),
+						rs.getString("pgps"),
+						rs.getString("pcomm"),
+						rs.getString("pfile")
+						);
+				placeList.add(place);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt, rs);
+		}
+		
+		return placeList;
+	}
+	
+	//맛집 목록
+	public List<Place> getRestList() {
+		List<Place> restList = new ArrayList<>();
+		
+		MySQLDB mysql = new MySQLDB();
+		try {
+			con = mysql.connect();
+			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_REST);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Place place = new Place(rs.getInt("pcode"),
+						rs.getString("pname"),
+						rs.getString("ptype"),
+						rs.getString("paddr"),
+						rs.getString("ptel"),
+						rs.getString("pgps"),
+						rs.getString("pcomm"),
+						rs.getString("pfile")
+						);
+				restList.add(place);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt, rs);
+		}
+		
+		return restList;
+	}
+	
+	//주요시설/맛집 상세보기
+	public Place getPlace(int pcode) {
+		Place place = new Place();
+		MySQLDB mysql = new MySQLDB();
+		
+		try {
+			con = mysql.connect();
+			
+			pstmt = con.prepareStatement(SqlLang.SELECT_PLACE_BYPCODE);
+			pstmt.setInt(1, pcode);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				place.setPcode(rs.getInt("pcode"));
+				place.setPname(rs.getString("pname"));
+				place.setPtype(rs.getString("ptype"));
+				place.setPaddr(rs.getString("paddr"));
+				place.setPtel(rs.getString("ptel"));
+				place.setPgps(rs.getString("pgps"));
+				place.setPcomm(rs.getString("pcomm"));
+				place.setPname(rs.getString("pfile"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt, rs);
+		}
+		
+		return place;
+	}
+	
+	
+	//주요시설/맛집 등록
+	public int insertPlace(Place place) {
+		int cnt = 0;
+		MySQLDB mysql = new MySQLDB();
+		try {
+			con = mysql.connect();
+			pstmt = con.prepareStatement(SqlLang.INS_PLACE);
+			pstmt.setString(1, place.getPname());
+			pstmt.setString(2, place.getPtype());
+			pstmt.setString(3, place.getPaddr());
+			pstmt.setString(4, place.getPtel());
+			pstmt.setString(5, place.getPgps());
+			pstmt.setString(6, place.getPcomm());
+			cnt = pstmt.executeUpdate();
+			
+			pstmt = null;
+			pstmt = con.prepareStatement(SqlLang.SELECT_PLACE_PCODE);
+			rs = pstmt.executeQuery();
+			int pc;
+			if(rs.next()) {
+				pc = rs.getInt("pcode");
+			}
+			
+			
+			
+			
+			cnt = cnt + pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt);
+		}
+		return cnt;
+	}
+	
+	
+	//공지사항 수정 처리
+	public int updatePlacePro(Place place) {
+		int cnt = 0;
+		MySQLDB mysql = new MySQLDB();
+		try {
+			con = mysql.connect();
+			pstmt = con.prepareStatement(SqlLang.UPD_NOTICE);
+			pstmt.setString(1, place.getTitle());
+			pstmt.setString(2, place.getContent());
+			pstmt.setInt(3, place.getNo());
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt);
+		}
+		return cnt;
+	}
+	
+	//공지사항 삭제
+	public int deletePlace(int no) {
+		int cnt = 0;
+		MySQLDB mysql = new MySQLDB();
+		try {
+			con = mysql.connect();
+			pstmt = con.prepareStatement(SqlLang.DEL_NOTICE);
+			pstmt.setInt(1, no);
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt);
+		}
+		return cnt;
+	}
+	
+	//가장 최근 공지사항
+	public Place getLatestPlace() {
+		Place place = new Place();
+		MySQLDB mysql = new MySQLDB();
+		
+		try {
+			con = mysql.connect();
+			
+			pstmt = con.prepareStatement(SqlLang.SELECT_LATEST_NOTICE);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				place.setNo(rs.getInt("no"));
+				place.setTitle(rs.getString("title"));
+				place.setContent(rs.getString("content"));
+				place.setResdate(rs.getString("resdate"));
+				place.setVisited(rs.getInt("visited"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			mysql.close(con, pstmt, rs);
+		}
+		
+		return place;
+	}
+	
+	
+	
+}

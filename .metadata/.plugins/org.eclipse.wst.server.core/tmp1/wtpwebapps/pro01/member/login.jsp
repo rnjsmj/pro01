@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<c:set var="path0" value="<%=request.getContextPath() %>" />    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<%@ include file="/head.jsp" %>
+<style>
+
+</style>
+</head>
+<body>
+<div id="header">
+	<%@ include file="/header.jsp" %>
+</div>
+<div id="contents">
+	<section class="page" id="page1">
+		
+		<div >
+			<h3 class="page_title">로그인</h3>
+			<form action="${path0 }/LoginPro.do" method="post">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th><label for="id">아이디</label></th>
+							<td>
+								<input type="text" name="id" id="id" class="form-control" required>
+							</td>
+						</tr>
+						<tr>
+							<th><label for="pw">비밀번호</label></th>
+							<td>
+								<input type="password" name="password" id="password" class="form-control" required>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<c:if test="${not empty msg}">
+				<div >${msg }</div>
+				</c:if>
+				<hr>
+				<div class="btn-group">
+				  <button type="submit" class="btn btn-secondary">로그인</button>
+				  <button type="reset" class="btn btn-secondary">취소</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>
+<div id="footer">
+	<%@ include file="/footer.jsp" %>
+</div>
+</body>
+</html>

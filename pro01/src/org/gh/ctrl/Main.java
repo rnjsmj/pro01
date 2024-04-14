@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.gh.dao.NoticeDAO;
+import org.gh.dto.Notice;
+
 
 
 
@@ -33,13 +36,16 @@ public class Main extends HttpServlet {
 		//   "http://ip주소/pro01/" 을 application에 저장
 		ServletContext application = request.getServletContext();
 		String realPath = request.getSession().getServletContext().getRealPath("/");
-		application.setAttribute("realPath", realPath);
-		application.setAttribute("title", "갈현동 소개");
-			
+		
 		
 		request.setAttribute("author", author);
 		request.setAttribute("image", "./images/image.png");
 		//2. /WebContent/index.jsp의 페이지 내용을 출력
+		
+		NoticeDAO ndao = new NoticeDAO();
+		Notice nNotice = ndao.getLatestNotice();
+		request.setAttribute("nNotice", nNotice);
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/index.jsp");
 		view.forward(request, response);
 	}

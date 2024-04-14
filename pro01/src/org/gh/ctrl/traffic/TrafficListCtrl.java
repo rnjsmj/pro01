@@ -1,0 +1,32 @@
+package org.gh.ctrl.traffic;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.gh.dao.TrafficDAO;
+import org.gh.dto.Traffic;
+
+@WebServlet("/TrafficList.do")
+public class TrafficListCtrl extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public TrafficListCtrl() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		TrafficDAO dao = new TrafficDAO();
+		List<Traffic> trafficList = dao.getTrafficList();
+		request.setAttribute("trafficList", trafficList);
+		RequestDispatcher view = request.getRequestDispatcher("/traffic/trafficList.jsp");
+		view.forward(request, response);
+	}
+
+}

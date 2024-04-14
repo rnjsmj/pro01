@@ -9,11 +9,10 @@ public class Place {
 	private String ptel;	//장소연락처
 	private String pgps;	//장소gps값
 	private String pcomm;	//장소설명
-	private String premark;	//참고사항
 	private String pfile;   //첨부파일
 	 
 	public Place(int pcode, String pname, String ptype, String paddr, String ptel, String pgps, String pcomm,
-			String premark, String pfile) {
+			String pfile) {
 		super();
 		this.pcode = pcode;
 		this.pname = pname;
@@ -22,7 +21,6 @@ public class Place {
 		this.ptel = ptel;
 		this.pgps = pgps;
 		this.pcomm = pcomm;
-		this.premark = premark;
 		this.pfile = pfile;
 	}
 	
@@ -84,13 +82,6 @@ public class Place {
 		this.pcomm = pcomm;
 	}
 
-	public String getPremark() {
-		return premark;
-	}
-
-	public void setPremark(String premark) {
-		this.premark = premark;
-	}
 
 	public String getPfile() {
 		return pfile;
@@ -103,7 +94,7 @@ public class Place {
 	@Override
 	public String toString() {
 		return "Place [pcode=" + pcode + ", pname=" + pname + ", ptype=" + ptype + ", paddr=" + paddr + ", ptel=" + ptel
-				+ ", pgps=" + pgps + ", pcomm=" + pcomm + ", premark=" + premark + ", pfile= "+ pfile +"]";
+				+ ", pgps=" + pgps + ", pcomm=" + pcomm  + ", pfile= "+ pfile +"]";
 	}
 	
 	

@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path0" value="<%=request.getContextPath() %>"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${title }</title>
+<%@ include file="/head.jsp" %>
+<style>
+
+	#contents { background-color: #ffffff; height:100vh; text-align:center;justify-content:center; display:grid; }
+	.page { padding : 2em; text-align : center; justify-content:center; width:960px;}
+	.main {text-align:center; width:100%}
+	.div-main {float:left; text-align:center;  width:50%; box-sizing:border-box;}
+	.div-sub {float:right; text-align:center;  width:50%; box-sizing:border-box;}
+	.alert {width:100%; text-align:left; border:2px solid #edecdd; border-radius: 10px; background-color:#f5f4e9;}
+	.alert-link {text-decoration:none; color:black;}
+	.noticePanel {width:90%; text-align:center; vertical-align:middle; margin-left:20px;}
+</style>
+</head>
+<body>
+<div id="header">
+	<%@ include file="/header.jsp" %>
+</div>
+
+<div id="contents" id="contents">
+	<section class="page" id="page1">
+		<div class="main">
+		<div class="div-main">
+			<img alt="메인이미지" src="${path0 }/images/main/main_image.png" width=90%>
+			<div class="noticePanel">
+			<div class="alert" role="alert">
+				<div style="float:left">
+					 공지사항       &nbsp; <a href="#" class="alert-link">${nNotice.title }</a>    &nbsp;
+				</div>
+  				
+  				 <div style="text-align:right">
+  				 	<fmt:parseDate value="${nNotice.resdate }" var="res" pattern="yyyy-MM-dd HH:mm:ss" />
+				<fmt:formatDate value="${res }" var="resdate" pattern="yyyy-MM-dd" />
+				${resdate }
+  				 </div>
+  				 
+			</div>
+		
+		</div>
+		</div>
+		<div class="div-sub">
+			서브
+		</div>
+		</div>
+		
+	</section>
+	
+	
+</div>
+
+<div id="footer">
+	<%@ include file="/footer.jsp" %>
+</div>
+</body>
+</html>

@@ -69,11 +69,11 @@
 				<c:if test="${sid.equals(qna.aid) }">
 					<c:if test="${qna.plevel==1 }">
 						<a href="${path0 }/QnaUpdate.do?no=${qna.no }" class="btn btn-secondary">질문 수정</a>
-				  		<a href="${path0 }/QnaDelete.do?parno=${qna.no }" class="btn btn-secondary">질문 삭제</a>
+				  		<a href="${path0 }/QuestionDelete.do?parno=${qna.no }" class="btn btn-secondary">질문 삭제</a>
 					</c:if>
 					<c:if test="${qna.plevel==2 }">
 						<a href="${path0 }/QnaUpdate.do?no=${qna.no }" class="btn btn-secondary">답변 수정</a>
-				  		<a href="${path0 }/QnaDelete.do?parno=${qna.no }" class="btn btn-secondary">답변 삭제</a>
+				  		<a href="${path0 }/AnswerDelete.do?no=${qna.no }" class="btn btn-secondary">답변 삭제</a>
 					</c:if>
 				 </c:if>
 			  <a href="${path0 }/QnaList.do" class="btn btn-secondary">목록</a>

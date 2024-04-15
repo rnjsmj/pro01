@@ -10,13 +10,13 @@
 <title>갈현동 - 공지사항</title>
 <%@ include file="/head.jsp" %>
 <style>
-	.page {text-align:center; justify-center:center; }
-	.title {}
-	.page_title {text-align:left; width:960px; margin:auto;  padding-top:1em; padding-bottom:1em;}
-	.div-table { text-align:center; display:flex; justify-center:center;  margin-bottom: 100px; }
-	
-	.table {text-align:center; width:960px; margin: 0 auto; min-width:724px;}
+	.page {text-align:center; justify-content:center;}
+	.page_title {text-align:left; width:960px; margin:auto;  padding-top:1em; padding-bottom:1em; padding-left:20px;}
+	.div-table { text-align:center; justify-content:center;  margin-bottom: 100px; }
+	.div-page {text-align:center; justify-content:center; margin: 0 auto;}
+	.table {text-align:center; width:960px; margin: auto; min-width:724px;}
 	.buttons { text-align:right; width:960px; margin : auto;}
+	.div-button {text-align:center;}
 	.buttons a { margin-right:30px;}
 	.th-no {width:10%;}
 	.th-resdate{width:30%;}
@@ -32,7 +32,7 @@
 </div>
 <div id="contents" class="contents" >
 	<section class="page" id="page1">
-		<div >
+		<div class="div-page">
 			<h3 class="page_title">공지사항</h3>
 			<div class="div-table">
 				<table class="table">
@@ -63,12 +63,17 @@
 						</c:if>
 					</tbody>
 				</table>
-			</div>
-			<c:if test="${sid.equals('admin') }">
+				<div class="div-button">
+				<c:if test="${sid.equals('admin') }">
+			
 			<div class="buttons">
 				  <a href="${path0 }/notice/notice_ins.jsp" class="btn btn-secondary">글 등록</a>
 			</div>
+			
 			</c:if>
+			</div>
+			</div>
+			
 		</div>
 	</section>
 </div>

@@ -10,9 +10,9 @@
 <title>갈현동 - 묻고답하기</title>
 <%@ include file="/head.jsp" %>
 <style>
-.page {text-align:center; }
-.page_title {display:flex;}
-.div_table {text-align:center; width:960px;}
+.page {text-align:center; justify-content:center; }
+	.page_title {text-align:left; width:960px; margin:auto;  padding-top:1em; padding-bottom:1em; padding-left:20px;}
+.div_table {text-align:center; width:960px; margin:auto;}
 .table th { text-align:right; width:60px;}
 .buttons { text-align:right; }
 .buttons a, button {width:90px;}
@@ -28,7 +28,7 @@
 <div id="header">
 	<%@ include file="/header.jsp" %>
 </div>
-<div id="contents" >
+<div id="contents" class="contents" >
 	<section class="page">
 			<h3 class="page_title">묻고답하기</h3>
 			<h5 class="page_subtitle">답변</h5>

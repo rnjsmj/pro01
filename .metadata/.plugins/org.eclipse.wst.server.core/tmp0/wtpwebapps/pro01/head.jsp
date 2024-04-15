@@ -18,3 +18,10 @@
 <meta property="og:description" content="갈현동, 로데오거리, 맛집, 교통" />
 <meta property="og:image" content="${ipath }/images/site.png" />
 <meta property="og:url" content="http://localhost:8091" />
+<link rel="stylesheet" href="${ipath }/css/common.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" />
+<link rel="stylesheet" href="${ipath }/css/acego.ui.min.css">
+<link rel="stylesheet" href="${ipath }/css/content.min.css">
+<link rel="stylesheet" href="${ipath }/css/ir-icon.css">
+<link rel="stylesheet" href="${ipath }/css/program.css">
+<link rel="stylesheet" href="${ipath }/css/board.min.css">

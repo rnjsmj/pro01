@@ -26,6 +26,7 @@
 	.td-title {text-align:left;}
 	.a-title { color:black;}
 	.a-title:hover { font-weight:600; text-decoration:none;}
+	.answer {color:#7d7c7a;}
 </style>
 </head>
 <body>
@@ -58,7 +59,7 @@
 									</c:if>
 									<c:if test="${dto.plevel==2 }">
 										<td class="td-sep">답변</td>
-										<td class="td-title"><a href="${path0 }/GetQna.do?no=${dto.no}" class="a-title"><span style="padding-left:8px;"/>
+										<td class="td-title"><a href="${path0 }/GetQna.do?no=${dto.no}" class="a-title answer"><span style="padding-left:8px;"/>
 										<img src="${path0 }/images/qna/answer.png" width=18px height=auto alt="ans"> ${dto.title }</a></td>
 										<td class="td-aid">관리자</td>
 									</c:if>

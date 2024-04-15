@@ -30,7 +30,7 @@
 <div id="contents" class="container">
 	<section class="page">
 		<div>
-			<h3>공지사항 수정</h3>
+			<h3>공지사항</h3>
 			<form action="${path0 }/NoticeUpdatePro.do" method="post">
 				<table class="table">
 					<tbody>

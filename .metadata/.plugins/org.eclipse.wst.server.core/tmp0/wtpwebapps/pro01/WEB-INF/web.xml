@@ -23,6 +23,7 @@
   	<url-pattern>*.css</url-pattern>
   	<url-pattern>*.jpg</url-pattern>
   	<url-pattern>*.png</url-pattern>
+  	<url-pattern>*.svg</url-pattern>
   	<url-pattern>*.gif</url-pattern>
   	<url-pattern>*.webp</url-pattern>
   	<url-pattern>*.mp4</url-pattern>
